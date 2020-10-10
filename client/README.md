@@ -26,3 +26,38 @@
 - Update orders within same vicinity
 - Provide average order fulfilments
 - Provide stats around orders, fulfilment, etc.
+
+### Schema
+
+ORDER
+id
+region
+equipment -> hasOne
+user -> string
+createdAt
+updatedAt
+
+RMA
+id
+region
+equipment -> hasOne
+quantity
+reason
+comment
+user -> string
+createdAt
+updatedAt
+
+EQUIPMENT
+id
+name
+equipmentUrl
+isComponent -> bool // for single controllers
+
+STATUS_UPDATE
+id
+order -> hasOne
+comment
+dateOfUpdate
+type -> QUEUED | PAYMENT | SHIPPED | RECEIVED | SUPPORT_MSG | MISSED_PAYMENT | FAILURE | CANCELLED
+createdAt
